@@ -16,6 +16,7 @@ export default StyleSheet.create({
 	fontSizeLg: {fontSize: 24},
 	fontSizeXl: {fontSize: 32},
 	fontSizeXxl: {fontSize: 36},
+	bold: {fontWeight: "700"},
 	white: {color: '#ffffff'},
 	textCenter: {textAlign: 'center'},
 	textLeft: {textAlign: 'left'},
