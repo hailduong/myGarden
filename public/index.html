@@ -11,8 +11,27 @@
 <body>
 <div id="myGarden">
 </div>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+<script>
+
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAOrcEdiP68yYa3Elq8m9yo_VGeYrcHNVs",
+		authDomain: "mygarden-a825d.firebaseapp.com",
+		databaseURL: "https://mygarden-a825d.firebaseio.com",
+		projectId: "mygarden-a825d",
+		storageBucket: "mygarden-a825d.appspot.com",
+		messagingSenderId: "71231374302"
+	};
+	firebase.initializeApp(config);
+
+	// Initialize Cloud Firestore through Firebase
+	var db = firebase.firestore();
+</script>
 <script src="./js/jquery.js"></script>
 <script src="./js/vendor.js"></script>
 <script src="./js/myGarden.js"></script>
+
 </body>
 </html>

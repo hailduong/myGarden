@@ -5,15 +5,17 @@ export default class Plant extends React.Component {
 	fertilize = () => {
 		const {fertilize} = this.props;
 		const {id} = this.props.data;
-		const time = new Date.now();
+		const time = Date.now();
 		const {type, amount} = this.props.fertilizerInfo;
 		fertilize(id, time, type, amount);
 	};
 
 	render() {
 
-		const {name, id, interval, lastTime, amount, type} = this.props.data;
-
+		const {name, interval, lastTime, amount, type} = this.props.data;
+		const now = Date.now();
+		const oneDayTime = 8.64e+7;
+		const remainingDays = Math.ceil((lastTime + interval * oneDayTime - now) / oneDayTime);
 
 		return (
 			<div className="row plant">
@@ -30,7 +32,7 @@ export default class Plant extends React.Component {
 				</div>
 				<div className="col-xs-4">
 					<h4>&nbsp;</h4>
-					<p><strong>3</strong> days</p>
+					<p><strong>{remainingDays}</strong> days</p>
 				</div>
 			</div>
 		)

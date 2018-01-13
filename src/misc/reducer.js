@@ -1,7 +1,7 @@
 const initialState = {
 	fertilizerInfo: {
-		currentType: "10-30-20",
-		currentAmount: "0.5"
+		type: "10-30-20",
+		amount: "0.5"
 	},
 	plants: [
 		{
@@ -52,19 +52,40 @@ export default function plantReducer(state = initialState, action) {
 		case Actions.FERTILIZE: {
 			const {id, time, type, amount} = action.data;
 
-			const newPlantState = state.plants.forEach((item) => {
+			const newPlantState = state.plants.map((item) => {
 				if (item.id === id) {
+					console.log('Fertilized!', item);
 					return {
 						...item,
 						lastTime: time,
 						type, amount,
-					}
+					};
 				}
 
 				return item
 			});
 
+
 			return Object.assign({}, state, {plants: newPlantState})
+		}
+
+		case Actions.SET_FERTILIZER_INFO: {
+
+			const fertilizerInfo = {
+				type: action.data.type,
+				amount: action.data.amount
+			};
+
+
+			console.log('Set fertilizer info!', fertilizerInfo);
+			return {
+				...state,
+				fertilizerInfo
+			}
+		}
+
+		case Actions.GET_BACKUP_DATA: {
+			return action.data
 		}
 
 		default: {
