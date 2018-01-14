@@ -44,6 +44,8 @@
         "react-native": "0.50.3",
         "react-native-elements": "^0.18.5",
         "react-redux": "^5.0.6",
+        "react-router": "^4.2.0",
+        "react-router-dom": "^4.2.2",
         "react-transition-group": "^2.2.1",
         "redux": "^3.7.2",
         "request-promise": "^4.2.2",

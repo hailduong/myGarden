@@ -86,23 +86,42 @@ class BottomNavBar extends React.Component {
 			fertilizerInfo: this.props.fertilizerInfo
 		};
 		docRef.set(data);
+		console.log('- Data is backed up:', data);
 	};
 
 	getBackupData = () => {
 		const docRef = db.collection("lyduong").doc("fertilizer");
 		docRef.get().then((doc) => {
 			if (doc.exists) {
-				console.log('Document data:', doc.data());
-				this.props.getBackupData(doc.data());
+				const docData = doc.data();
+				console.log('- Data retrieved:', docData);
+				this.props.getBackupData(docData);
+				localStorage.myGarden = JSON.stringify(docData);
+				console.log('- Data is also saved to localStorage');
 			} else {
-				console.log("No such document!");
+				console.log("- No such document!");
 			}
 		})
 
 	};
 
+	getData = () => {
+		// Get from localStorage, 
+		const localStorageMyGarden = localStorage.myGarden;
+		if (!!localStorageMyGarden) {
+			console.log('- Data exists in LocalStorage, we will use localStorage data');
+			this.props.getBackupData(JSON.parse(localStorageMyGarden));
+		} else {
+			// If not exist, get data from Firebase
+			console.log('- Data is not in localStorage, will get from Database');
+			this.getBackupData();
+		}
+
+
+	};
+
 	componentDidMount() {
-		this.getBackupData();
+		this.getData();
 		const {type, amount} = this.props.fertilizerInfo;
 		this.setState({type, amount});
 	}

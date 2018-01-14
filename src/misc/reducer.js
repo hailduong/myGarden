@@ -88,6 +88,26 @@ export default function plantReducer(state = initialState, action) {
 			return action.data
 		}
 
+		case Actions.ADD_PLANT: {
+			
+			const data = action.data;
+			const newPlant = {
+				id: data.name,
+				name: data.name,
+				interval: data.interval,
+				lastTime: Date.now(),
+				type: '',
+				amount: 0,
+			};
+
+			const newState = {
+				...state,
+				plants: Object.assign({}, state.plants, newPlant)
+			};
+			
+			return newState
+		}
+
 		default: {
 			return state
 		}
