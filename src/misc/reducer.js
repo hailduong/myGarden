@@ -105,6 +105,8 @@ export default function plantReducer(state = initialState, action) {
 				plants: Object.assign({}, state.plants, newPlant)
 			};
 			
+			console.log('- Plant added:', newPlant);
+			
 			return newState
 		}
 
