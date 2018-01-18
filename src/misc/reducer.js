@@ -89,7 +89,7 @@ export default function plantReducer(state = initialState, action) {
 		}
 
 		case Actions.ADD_PLANT: {
-			
+
 			const data = action.data;
 			const newPlant = {
 				id: data.name,
@@ -100,13 +100,17 @@ export default function plantReducer(state = initialState, action) {
 				amount: 0,
 			};
 
+
 			const newState = {
 				...state,
-				plants: Object.assign({}, state.plants, newPlant)
+				plants: [
+					...state.plants,
+					newPlant
+				]
 			};
-			
+
 			console.log('- Plant added:', newPlant);
-			
+
 			return newState
 		}
 

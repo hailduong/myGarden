@@ -2,12 +2,11 @@ import React from "react";
 import PlantList from "./PlantList";
 import BottomNavBar from "./BottomNavBar";
 
+
 export default class Home extends React.Component {
 	render() {
 		return (
 			<div className="container home">
-				<h1>myGarden</h1>
-				<hr/>
 				<PlantList/>
 				<BottomNavBar/>
 			</div>
@@ -28,7 +27,23 @@ export default class Home extends React.Component {
 		}
 	}
 
+	requestFullScreen() {
+		const doc = window.document;
+		const docEl = doc.documentElement;
+
+		const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+		const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+		if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+			requestFullScreen.call(docEl);
+		}
+		else {
+			cancelFullScreen.call(doc);
+		}
+	}
+
 	componentDidMount() {
-		this.addServiceWorker();
+
+		//this.addServiceWorker();
 	}
 }

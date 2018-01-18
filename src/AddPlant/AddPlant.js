@@ -22,6 +22,7 @@ class AddPlant extends React.Component {
 	addPlant = () => {
 		const {name, interval} = this.state;
 		this.props.addPlant(name, interval);
+		this.props.history.push("/");
 	};
 
 	render() {
