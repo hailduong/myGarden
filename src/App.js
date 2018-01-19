@@ -1,8 +1,6 @@
 import React from 'react';
 import Home from "./Home/Home.js";
 import AddPlant from "./AddPlant/AddPlant";
-import {Route, BrowserRouter} from "react-router-dom";
-import TabNavigator from "./TabNavigator";
 import * as ons from "onsenui";
 import {Tabbar, Tab, Page, Icon, Toolbar, ToolbarButton} from "react-onsenui";
 

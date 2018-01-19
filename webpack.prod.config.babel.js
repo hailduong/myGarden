@@ -3,8 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		vendor: ['babel-polyfill', 'bootstrap', 'react', 'react-dom'],
-		yelpBundle: ['./src/App.js']
+		vendor: ['react', 'react-dom'],
+		myGarden: ['./index.js']
 	},
 	devtool: 'source-map',
 	watchOptions: {
@@ -47,11 +47,6 @@ module.exports = {
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
 			sourceMap: true
-		}),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify('production')
-			}
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor'

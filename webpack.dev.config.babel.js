@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
-		vendor: ['babel-polyfill', 'bootstrap', 'react', 'react-dom'],
+		vendor: ['react', 'react-dom'],
 		myGarden: ['./index.js']
 	},
 	devtool: 'source-map',
