@@ -14,5 +14,7 @@ store.subscribe(()=>{
 	console.log('- Store is saved to `localStorage`');
 });
 
+
+
 ReactDOM.render(<Provider store={store}><App/></Provider>,
 	document.querySelector('#myGarden'));

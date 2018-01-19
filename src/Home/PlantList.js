@@ -3,6 +3,7 @@ import Plant from "./Plant";
 import {connect} from "react-redux";
 import * as Actions from "../misc/actions";
 import sortBy from "sort-by";
+import {Card} from "react-onsenui";
 
 class PlantList extends React.Component {
 	render() {
@@ -29,10 +30,14 @@ class PlantList extends React.Component {
 
 		// Map array to components
 		const plantNodes = plantData.map((plant) => {
-			return <Plant fertilize={fertilize}
-						  key={plant.id}
-						  fertilizerInfo={fertilizerInfo}
-						  data={plant}/>
+			return (
+				<Card>
+					<Plant fertilize={fertilize}
+						   key={plant.id}
+						   fertilizerInfo={fertilizerInfo}
+						   data={plant}/>
+				</Card>
+			)
 		});
 
 		return (
@@ -41,7 +46,7 @@ class PlantList extends React.Component {
 			</div>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = state => ({

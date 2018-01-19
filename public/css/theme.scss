@@ -1,0 +1,15 @@
+.home{
+    &__plant-list{
+        &{ margin-top:15px; margin-bottom:125px; margin-left:-8px; margin-right:-8px; }
+        .plant{ margin-bottom:15px;
+            .ion-leaf{ color:#81c784; position:relative; top:-4px; margin-right:7px; font-size:22px; }
+            .btn-fertilize{ margin-left:25px; margin-top:10px; }
+        }
+    }
+
+    &__navbar{
+        &{ padding:15px 0; }
+        .form-control{ margin-bottom:10px; text-align:center;}
+        .btn{ width:100% }
+    }
+}

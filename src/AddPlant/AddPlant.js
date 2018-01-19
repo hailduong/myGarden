@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import * as Actions from "../misc/actions";
+import {Button} from "react-onsenui";
 
 class AddPlant extends React.Component {
 
@@ -38,7 +39,7 @@ class AddPlant extends React.Component {
 						<label htmlFor="exampleInputPassword1">Interval</label>
 						<input onChange={this.handleIntervalChange} type="number" className="form-control" placeholder="days e.g. 3"/>
 					</div>
-					<button onClick={this.addPlant} type="button" className="btn btn-default">Add</button>
+					<Button onClick={this.addPlant}>Add</Button>
 				</form>
 			</div>
 		)

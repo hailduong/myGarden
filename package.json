@@ -2,11 +2,7 @@
     "name": "myGarden",
     "version": "0.1.0",
     "private": true,
-    "devDependencies": {
-        "jest-expo": "23.0.0",
-        "react-native-scripts": "1.8.1",
-        "react-test-renderer": "16.0.0"
-    },
+    "devDependencies": {},
     "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
     "scripts": {
         "build": "node_modules/.bin/webpack --config ./webpack.dev.config.babel.js",
@@ -33,14 +29,20 @@
         "babel-preset-react": "^6.24.1",
         "body-parser": "^1.18.2",
         "bootstrap": "^3.3.7",
+        "css-loader": "^0.28.9",
         "express": "^4.16.2",
+        "extract-text-webpack-plugin": "^3.0.2",
         "jquery": "^3.2.1",
         "less": "^2.7.3",
         "less-plugin-clean-css": "^1.5.1",
+        "onsenui": "^2.8.3",
+        "postcss": "^6.0.16",
+        "postcss-cssnext": "^3.0.2",
+        "postcss-loader": "^2.0.10",
         "react": "16.0.0",
         "react-dom": "^16.2.0",
-        "react-native": "0.50.3",
         "react-native-elements": "^0.18.5",
+        "react-onsenui": "^1.9.0",
         "react-redux": "^5.0.6",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
@@ -48,6 +50,7 @@
         "redux": "^3.7.2",
         "request-promise": "^4.2.2",
         "sort-by": "^1.2.0",
+        "style-loader": "^0.19.1",
         "webpack": "^3.10.0"
     }
 }

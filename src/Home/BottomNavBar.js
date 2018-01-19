@@ -27,7 +27,7 @@ class BottomNavBar extends React.Component {
 		const {type, amount} = this.state;
 
 		return (
-			<nav className="navbar navbar-default navbar-fixed-bottom">
+			<nav className="home__navbar navbar navbar-default navbar-fixed-bottom">
 				<div className="container">
 					<div className="row">
 						<div className="col-xs-6">
@@ -68,10 +68,10 @@ class BottomNavBar extends React.Component {
 					</div>
 					<div className="row">
 						<div className="col-xs-6">
-							<button onClick={this.backUpData} className="btn btn-default">Backup</button>
+							<button onClick={this.getBackupData} className="btn btn-default">Get Backup Data</button>
 						</div>
 						<div className="col-xs-6">
-							<button onClick={this.getBackupData} className="btn btn-default">Get Backup Data</button>
+							<button onClick={this.backUpData} className="btn btn-default">Backup</button>
 						</div>
 					</div>
 				</div>
