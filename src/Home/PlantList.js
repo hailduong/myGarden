@@ -31,9 +31,8 @@ class PlantList extends React.Component {
 		// Map array to components
 		const plantNodes = plantData.map((plant) => {
 			return (
-				<Card>
+				<Card key={plant.id}>
 					<Plant fertilize={fertilize}
-						   key={plant.id}
 						   fertilizerInfo={fertilizerInfo}
 						   data={plant}/>
 				</Card>

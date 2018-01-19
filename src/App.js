@@ -3,21 +3,26 @@ import Home from "./Home/Home.js";
 import AddPlant from "./AddPlant/AddPlant";
 import {Route, BrowserRouter} from "react-router-dom";
 import TabNavigator from "./TabNavigator";
-
+import * as ons from "onsenui";
 import {Tabbar, Tab, Page, Icon, Toolbar, ToolbarButton} from "react-onsenui";
 
 
 export default class App extends React.Component {
 
+	constructor() {
+		super();
+		ons.disableAutoStyling();
+	}
+
 	renderTabs = () => {
 		return [
 			{
-				content: <Page><Home/></Page>,
-				tab: <Tab label='Home' icon='md-home'/>
+				content: <Page key="1"><Home/></Page>,
+				tab: <Tab key="1" label='Home' icon='md-home'/>
 			},
 			{
-				content: <Page><AddPlant/></Page>,
-				tab: <Tab label='Add Plant' icon='md-file-plus'/>
+				content: <Page key="2"><AddPlant/></Page>,
+				tab: <Tab key="2" label='Add Plant' icon='md-file-plus'/>
 			}
 		];
 
@@ -43,5 +48,6 @@ export default class App extends React.Component {
 			</Page>
 		)
 	}
+
 
 }
