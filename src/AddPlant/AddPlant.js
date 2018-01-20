@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import * as Actions from "../misc/actions";
 import {Button} from "react-onsenui";
+import * as ons from "onsenui";
+
 
 class AddPlant extends React.Component {
 
@@ -23,7 +25,10 @@ class AddPlant extends React.Component {
 	addPlant = () => {
 		const {name, interval} = this.state;
 		this.props.addPlant(name, interval);
-		this.props.history.push("/");
+		ons.notification.toast({
+			message: `<strong>${name}</strong> was added with interval <strong>${interval}</strong> day(s)`,
+			timeout: 1500
+		})
 	};
 
 	render() {

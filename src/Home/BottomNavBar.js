@@ -1,6 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import * as Actions from "../misc/actions";
+import * as ons from "onsenui";
+
 
 class BottomNavBar extends React.Component {
 
@@ -87,6 +89,7 @@ class BottomNavBar extends React.Component {
 		};
 		docRef.set(data);
 		console.log('- Data is backed up:', data);
+		ons.notification.toast({message: 'Data backed up', timeout: 2000})
 	};
 
 	getBackupData = () => {
@@ -98,6 +101,7 @@ class BottomNavBar extends React.Component {
 				this.props.getBackupData(docData);
 				localStorage.myGarden = JSON.stringify(docData);
 				console.log('- Data is also saved to localStorage');
+				ons.notification.toast({message: 'Data received', timeout: 2000})
 			} else {
 				console.log("- No such document!");
 			}

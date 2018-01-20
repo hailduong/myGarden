@@ -30,11 +30,6 @@ export default class App extends React.Component {
 		return (
 			<Toolbar>
 				<div className='center'>myGarden</div>
-				<div className='right'>
-					<ToolbarButton>
-						<Icon icon='md-menu'></Icon>
-					</ToolbarButton>
-				</div>
 			</Toolbar>
 		);
 	};
@@ -42,7 +37,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Page renderToolbar={this.renderToolbar}>
-				<Tabbar swipeable={true} renderTabs={this.renderTabs}/>/>
+				<Tabbar renderTabs={this.renderTabs}/>/>
 			</Page>
 		)
 	}

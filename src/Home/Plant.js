@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Icon} from "react-onsenui";
-
+import * as ons from "onsenui";
 
 export default class Plant extends React.Component {
 
@@ -10,6 +10,7 @@ export default class Plant extends React.Component {
 		const time = Date.now();
 		const {type, amount} = this.props.fertilizerInfo;
 		fertilize(id, time, type, amount);
+		ons.notification.toast({message: 'Fertilized', timeout: 1000})
 	};
 
 	render() {
