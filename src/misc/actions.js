@@ -24,3 +24,8 @@ export const addPlant = ({name, interval}) => ({
 	type: ADD_PLANT,
 	data: {name, interval}
 });
+
+export const editPlant = (id, name, interval) => ({
+	type: EDIT_PLANT,
+	data: {id, name, interval}
+});

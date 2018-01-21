@@ -13,6 +13,11 @@ export default class Plant extends React.Component {
 		ons.notification.toast({message: 'Fertilized', timeout: 1000})
 	};
 
+	goToEditPlant = () => {
+		const {id} = this.props.data;
+		console.log('Edit this plant', id)
+	};
+
 	render() {
 
 		const {name, interval, lastTime, amount, type} = this.props.data;
@@ -22,6 +27,7 @@ export default class Plant extends React.Component {
 
 		return (
 			<div className="row plant">
+				<Icon icon="ion-edit" onClick={this.goToEditPlant}/>
 				<div className="col-xs-9">
 					<h3><Icon icon="ion-leaf"/>{name}</h3>
 					<ul>

@@ -49,6 +49,7 @@ import * as Actions from "./actions";
 
 export default function plantReducer(state = initialState, action) {
 	switch (action.type) {
+
 		case Actions.FERTILIZE: {
 			const {id, time, type, amount} = action.data;
 
@@ -112,6 +113,19 @@ export default function plantReducer(state = initialState, action) {
 			console.log('- Plant added:', newPlant);
 
 			return newState
+		}
+
+		case Actions.EDIT_PLANT: {
+			
+			const {id, name, interval} = action.data;
+			const plantIndex = state.plants.findIndex(item => item.id === id);
+			
+			const newState = JSON.parse(JSON.stringify(state));
+			
+			newState.plants[plantIndex].name = name;
+			newState.plants[plantIndex].interval = interval;
+
+			return newState;
 		}
 
 		default: {
