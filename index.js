@@ -8,12 +8,11 @@ import reducer from "./src/misc/reducer";
 
 const store = createStore(reducer);
 
-store.subscribe(()=>{
+store.subscribe(() => {
 	const currentState = store.getState();
 	localStorage.setItem('myGarden', JSON.stringify(currentState));
 	console.log('- Store is saved to `localStorage`');
 });
-
 
 
 ReactDOM.render(<Provider store={store}><App/></Provider>,

@@ -5,44 +5,15 @@ const initialState = {
 	},
 	plants: [
 		{
-			id: 1,
-			name: 'Dua Can Hong',
-			lastTime: 1514048400000,
-			type: '5-30-30',
-			amount: 1,
-			interval: 4
-		},
-		{
-			id: 2,
-			name: 'Dua Can Do',
-			lastTime: 1514048400000,
-			type: '5-30-30',
-			amount: 1,
-			interval: 6
-		},
-		{
-			id: 3,
-			name: 'Dua Can Tim',
-			lastTime: 1514048400000,
-			type: '5-30-30',
-			amount: 1,
-			interval: 8
-		},
-		{
-			id: 4,
-			name: 'Hong Thien Huong',
-			lastTime: 1514048400000,
-			type: '12-12-17',
-			amount: 1,
-			interval: 10
-		},
-		{
-			id: 5,
+			id: 'Chuong Vang',
 			name: 'Chuong Vang',
-			lastTime: 1514048400000,
-			type: '12-12-17',
-			amount: 1,
-			interval: 4
+			interval: 4,
+			fertilizingHistory: [{
+				lastTime: 1514048400000,
+				type: '12-12-17',
+				amount: 1
+			}],
+
 		}]
 };
 import * as Actions from "./actions";
@@ -56,10 +27,19 @@ export default function plantReducer(state = initialState, action) {
 			const newPlantState = state.plants.map((item) => {
 				if (item.id === id) {
 					console.log('Fertilized!', item);
+					const newHistory = {
+						lastTime: time,
+						type: type,
+						amount: amount
+					};
+
+
 					return {
 						...item,
-						lastTime: time,
-						type, amount,
+						fertilizingHistory: [
+							...item.fertilizingHistory
+							, newHistory
+						]
 					};
 				}
 
@@ -96,9 +76,13 @@ export default function plantReducer(state = initialState, action) {
 				id: data.name,
 				name: data.name,
 				interval: data.interval,
-				lastTime: Date.now(),
-				type: '',
-				amount: 0,
+				fertilizingHistory: [
+					{
+						lastTime: Date.now(),
+						type: '',
+						amount: 0,
+					}
+				]
 			};
 
 
@@ -116,12 +100,12 @@ export default function plantReducer(state = initialState, action) {
 		}
 
 		case Actions.EDIT_PLANT: {
-			
+
 			const {id, name, interval} = action.data;
 			const plantIndex = state.plants.findIndex(item => item.id === id);
-			
+
 			const newState = JSON.parse(JSON.stringify(state));
-			
+
 			newState.plants[plantIndex].name = name;
 			newState.plants[plantIndex].interval = interval;
 

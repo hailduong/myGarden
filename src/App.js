@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import Home from "./Home/Home.js";
-import AddPlant from "./AddPlant/AddPlant";
+import AddPlant from "./UpdatePlant/AddPlant";
+import EditPlant from "./UpdatePlant/EditPlant";
 import SideMenu from "./SideMenu";
 import * as ons from "onsenui";
 import {
@@ -23,11 +25,11 @@ export default class App extends React.Component {
 	renderTabs = () => {
 		return [
 			{
-				content: <Page key="1"><Home/></Page>,
+				content: <Page key="1"><Home navigator={this.props.navigator}/></Page>,
 				tab: <Tab key="1" label='Home' icon='md-home'/>
 			},
 			{
-				content: <Page key="2"><AddPlant/></Page>,
+				content: <Page navigator={this.props.navigator} key="2"><AddPlant/></Page>,
 				tab: <Tab key="2" label='Add Plant' icon='md-file-plus'/>
 			}
 		];
@@ -59,13 +61,19 @@ export default class App extends React.Component {
 		);
 	};
 
-	renderAppContainer = (route, navigator) => {
+	renderHomePage = (route, navigator) => {
+		return (
+			<Page renderToolbar={this.renderTopToolbar}>
+				<Tabbar navigator={navigator} renderTabs={this.renderTabs}/>/>
+			</Page>
+		)
+	};
+
+	render() {
 		return (
 			<Splitter>
 				<SplitterContent>
-					<Page navigator={navigator} renderToolbar={this.renderTopToolbar}>
-						<Tabbar renderTabs={this.renderTabs}/>/>
-					</Page>
+					<Navigator renderPage={this.renderHomePage} initialRoute={{title: "Home"}}/>
 				</SplitterContent>
 				<SplitterSide isOpen={this.state.menuIsOpen}
 							  collapse={"collapse"}
@@ -77,24 +85,8 @@ export default class App extends React.Component {
 				</SplitterSide>
 			</Splitter>
 		)
-	};
-
-	render() {
-		return (
-			<Navigator
-				renderPage={this.renderAppContainer}
-				initialRoute={{
-					title: 'Home',
-					hasBackButton: false
-				}}
-			/>
-		)
 	}
 
 
 }
 
-
-ons.ready(function() {
-	ReactDOM.render(<MyPage />, document.getElementById('app'));
-});

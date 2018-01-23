@@ -16,7 +16,10 @@ class PlantList extends React.Component {
 		const oneDayTime = 8.64e+7;
 
 		const plantData = this.props.plants.map(item => {
-			const {interval, lastTime} = item;
+			const {interval} = item;
+			const fertilizingHistory = item.fertilizingHistory;
+			const lastItemIndex = fertilizingHistory.length - 1;
+			const {lastTime} = fertilizingHistory[lastItemIndex];
 			const remainingDays = Math.ceil((lastTime + interval * oneDayTime - now) / oneDayTime);
 
 			return {

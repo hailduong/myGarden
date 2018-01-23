@@ -3,7 +3,7 @@ import {Page, List, ListItem} from "react-onsenui";
 
 export default class SideMenu extends React.Component {
 
-	dataSource = ['Home', 'Add Plant', 'Settings'];
+	dataSource = ['Home', 'Add Plant', 'Settings', 'Help', 'About', 'Language'];
 
 	renderMenuRow = (item) => {
 		return (
