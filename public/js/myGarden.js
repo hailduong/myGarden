@@ -39898,7 +39898,9 @@ var _reducer2 = _interopRequireDefault(_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducer2.default);
+var reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+var store = (0, _redux.createStore)(_reducer2.default, reduxDevTool);
 
 store.subscribe(function () {
 	var currentState = store.getState();
@@ -40359,10 +40361,12 @@ var Plant = function (_React$Component) {
 			var _props$data = this.props.data,
 			    name = _props$data.name,
 			    interval = _props$data.interval;
-			var _props$data$fertilizi = this.props.data.fertilizingHistory.reverse()[0],
-			    lastTime = _props$data$fertilizi.lastTime,
-			    amount = _props$data$fertilizi.amount,
-			    type = _props$data$fertilizi.type;
+
+			var fertilizingHistory = this.props.data.fertilizingHistory;
+			var _fertilizingHistory = fertilizingHistory[fertilizingHistory.length - 1],
+			    lastTime = _fertilizingHistory.lastTime,
+			    amount = _fertilizingHistory.amount,
+			    type = _fertilizingHistory.type;
 
 			var now = Date.now();
 			var oneDayTime = 8.64e+7;
@@ -43568,13 +43572,16 @@ function plantReducer() {
 					if (item.id === id) {
 						console.log('Fertilized!', item);
 						var newHistory = {
+							amount: amount,
 							lastTime: time,
-							type: type,
-							amount: amount
+							type: type
 						};
 
+						var newFertilizingHistory = JSON.parse(JSON.stringify(item.fertilizingHistory));
+						newFertilizingHistory.push(newHistory);
+
 						return _extends({}, item, {
-							fertilizingHistory: [].concat(_toConsumableArray(item.fertilizingHistory), [newHistory])
+							fertilizingHistory: newFertilizingHistory
 						});
 					}
 

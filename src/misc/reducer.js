@@ -28,18 +28,17 @@ export default function plantReducer(state = initialState, action) {
 				if (item.id === id) {
 					console.log('Fertilized!', item);
 					const newHistory = {
+						amount: amount,
 						lastTime: time,
-						type: type,
-						amount: amount
+						type: type
 					};
 
+					let newFertilizingHistory = JSON.parse(JSON.stringify(item.fertilizingHistory));
+					newFertilizingHistory.push(newHistory);
 
 					return {
 						...item,
-						fertilizingHistory: [
-							...item.fertilizingHistory
-							, newHistory
-						]
+						fertilizingHistory: newFertilizingHistory
 					};
 				}
 

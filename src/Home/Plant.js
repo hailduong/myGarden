@@ -23,7 +23,8 @@ export default class Plant extends React.Component {
 		if (!this.props.data) return null;
 
 		const {name, interval} = this.props.data;
-		const {lastTime, amount, type} = this.props.data.fertilizingHistory.reverse()[0];
+		const fertilizingHistory = this.props.data.fertilizingHistory;
+		const {lastTime, amount, type} = fertilizingHistory[fertilizingHistory.length - 1];
 		const now = Date.now();
 		const oneDayTime = 8.64e+7;
 		const remainingDays = Math.ceil((lastTime + interval * oneDayTime - now) / oneDayTime);
