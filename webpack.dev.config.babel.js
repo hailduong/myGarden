@@ -20,9 +20,6 @@ module.exports = {
 		libraryExport: "default",
 		chunkFilename: '[name].chunk.js',
 	},
-	externals: {
-		jquery: 'jQuery'
-	},
 	module: {
 		rules: [
 			{

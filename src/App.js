@@ -10,6 +10,7 @@ import {
 	List, ListItem, Splitter, SplitterSide, SplitterContent
 } from "react-onsenui";
 
+import traversing from "jquery/dist/jquery.slim"
 
 export default class App extends React.Component {
 

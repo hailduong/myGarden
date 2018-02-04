@@ -16,6 +16,7 @@ class PlantList extends React.Component {
 		const oneDayTime = 8.64e+7;
 
 		const plantData = this.props.plants.map(item => {
+
 			const {interval} = item;
 			const fertilizingHistory = item.fertilizingHistory;
 			const lastItemIndex = fertilizingHistory.length - 1;
@@ -26,6 +27,11 @@ class PlantList extends React.Component {
 				...item,
 				remainingDays
 			}
+		}).filter(item => {
+			// TODO: Hack for now, remove dead plants
+			const deadPlants = ["Dừa Cạn Tím (Nhỏ)", "Dừa Cạn Hồng"];
+			return deadPlants.indexOf(item.id) === -1;
+
 		});
 
 		// Sort plants
